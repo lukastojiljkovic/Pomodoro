@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -81,9 +82,11 @@ public class MainActivity extends AppCompatActivity {
         // Update progress bar
         progressBar.setProgress(pomodoroTimer.getProgress());
 
-        // Update background color based on current session
-        Drawable backgroundColor = getColorForSession(pomodoroTimer.getCurrentSession());
-        getWindow().getDecorView().setBackground(backgroundColor);
+        // Update gradient overlay based on current session
+        View gradientOverlay = findViewById(R.id.gradient_overlay);
+        Drawable gradientDrawable = getColorForSession(pomodoroTimer.getCurrentSession());
+        gradientOverlay.setBackground(gradientDrawable);
+        gradientOverlay.setAlpha(0.5f); // Set alpha value to control transparency of overlay
     }
 
     // Get the appropriate background color for the given session
@@ -92,16 +95,16 @@ public class MainActivity extends AppCompatActivity {
         drawable.setShape(GradientDrawable.RECTANGLE);
         switch (session) {
             case WORK:
-                drawable.setColors(new int[]{Color.rgb(0, 155, 0), Color.rgb(155, 255, 0)});
+                drawable.setColors(new int[]{Color.argb(150, 0, 155, 0), Color.argb(25, 155, 255, 0)});
                 break;
             case SHORT_BREAK:
-                drawable.setColors(new int[]{Color.rgb(0, 120, 240), Color.rgb(32, 50, 150)});
+                drawable.setColors(new int[]{Color.argb(150, 0, 120, 240), Color.argb(25, 32, 50, 150)});
                 break;
             case LONG_BREAK:
-                drawable.setColors(new int[]{Color.rgb(230, 15, 25), Color.rgb(180, 45, 23)});
+                drawable.setColors(new int[]{Color.argb(150, 230, 15, 25), Color.argb(25, 180, 45, 23)});
                 break;
             default:
-                drawable.setColor(Color.WHITE);
+                drawable.setColor(Color.TRANSPARENT);
                 break;
         }
         return drawable;

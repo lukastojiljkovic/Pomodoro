@@ -2,9 +2,9 @@ package com.example.pomodoro;
 
 public class PomodoroTimer {
     // Declare constants for session durations
-    private static final long WORK_DURATION = 20 * 60 * 1000; // 20 minutes in milliseconds
-    private static final long SHORT_BREAK_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
-    private static final long LONG_BREAK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
+    private static final long WORK_DURATION = 1 * 1 * 1000; // 20 minutes in milliseconds
+    private static final long SHORT_BREAK_DURATION = 1 * 2 * 1000; // 5 minutes in milliseconds
+    private static final long LONG_BREAK_DURATION = 1 * 3 * 1000; // 15 minutes in milliseconds
 
     // Declare enum for session types
     public enum Session {
