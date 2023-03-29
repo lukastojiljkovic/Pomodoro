@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button playButton;
     private Button pauseButton;
     private Button stopButton;
+    private Button resetButton;
 
     // Declare variables for timer logic
     private PomodoroTimer pomodoroTimer;
@@ -41,12 +43,18 @@ public class MainActivity extends AppCompatActivity {
         playButton = findViewById(R.id.playButton);
         pauseButton = findViewById(R.id.pauseButton);
         stopButton = findViewById(R.id.stopButton);
+        resetButton = findViewById(R.id.resetButton);
 
         // Initialize timer logic
         Context context = getApplicationContext();
         pomodoroTimer = new PomodoroTimer(context);
 
         // Set up button click listeners
+        resetButton.setOnClickListener(view -> {
+            // reset the number of completed pomodoros
+            resetCompletedPomodoros(MainActivity.this);
+        });
+
         playButton.setOnClickListener(view -> {
             // Start or resume the timer
             pomodoroTimer.start();
@@ -76,6 +84,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    private void resetCompletedPomodoros(Context context) {
+        try {
+            String filename = "completedPomodoros.txt";
+            String fileContents = "0";
+
+            // Write to the file
+            FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
+            fos.write(fileContents.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Update the UI based on the current state of the timer
