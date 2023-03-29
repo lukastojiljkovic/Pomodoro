@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Pomodoro</string>
-    <string name="background_image_description">Slika</string>
+    <string name="background_image_description">Backgroung</string>
+    <string name="play_button_description">Play</string>
+    <string name="pause_button_description">Pause</string>
+    <string name="stop_button_description">Stop</string>
+    <string name="reset_button_description">Reset</string>
 </resources>

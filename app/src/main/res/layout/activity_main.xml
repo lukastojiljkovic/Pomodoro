@@ -81,55 +81,61 @@
         app:layout_constraintTop_toBottomOf="@+id/timeRemainingTextView"
         app:layout_constraintVertical_bias="0.04" />
 
-    <Button
+    <ImageButton
         android:id="@+id/playButton"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:background="@drawable/round_button_green"
-        android:text="▶"
-        android:textSize="42sp"
+        android:contentDescription="@string/play_button_description"
+        android:src="@drawable/play_button"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927" />
+        app:layout_constraintVertical_bias="0.927"
+        tools:src="@drawable/play_button" />
 
-    <Button
+    <ImageButton
         android:id="@+id/pauseButton"
         android:layout_width="76dp"
         android:layout_height="76dp"
-        android:background="@drawable/round_button_green"
-        android:text="❚❚"
-        android:textSize="24sp"
+        android:src="@drawable/pause_button"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/pause_button_description"
         app:layout_constraintBottom_toBottomOf="@+id/playButton"
         app:layout_constraintEnd_toStartOf="@+id/playButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/playButton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/stopButton"
         android:layout_width="76dp"
         android:layout_height="76dp"
-        android:background="@drawable/round_button_green"
-        android:text="■"
-        android:textSize="32sp"
+        android:src="@drawable/stop_button"
+        android:padding="5dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/stop_button_description"
         app:layout_constraintBottom_toBottomOf="@+id/playButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playButton"
         app:layout_constraintTop_toTopOf="@+id/playButton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/resetButton"
-        android:layout_width="68dp"
-        android:layout_height="48dp"
-        android:fontFamily="monospace"
-        android:insetTop="5dp"
-        android:insetBottom="5dp"
-        android:text="Reset"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="12sp"
+        android:layout_width="57dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/reset_button_description"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/reset_button"
         app:layout_constraintEnd_toStartOf="@+id/tomatoImageView"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        tools:src="@drawable/reset_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

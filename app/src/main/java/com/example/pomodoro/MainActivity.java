@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -23,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView sessionNameTextView;
     private TextView timeRemainingTextView;
     private ProgressBar progressBar;
-    private Button playButton;
-    private Button pauseButton;
-    private Button stopButton;
-    private Button resetButton;
+    private ImageButton playButton;
+    private ImageButton pauseButton;
+    private ImageButton stopButton;
+    private ImageButton resetButton;
 
     // Declare variables for timer logic
     private PomodoroTimer pomodoroTimer;
