@@ -2,6 +2,7 @@ package com.example.pomodoro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -10,6 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
     // Declare variables for UI elements
@@ -37,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         stopButton = findViewById(R.id.stopButton);
 
         // Initialize timer logic
-        pomodoroTimer = new PomodoroTimer();
+        Context context = getApplicationContext();
+        pomodoroTimer = new PomodoroTimer(context);
 
         // Set up button click listeners
         playButton.setOnClickListener(view -> {
@@ -87,7 +95,27 @@ public class MainActivity extends AppCompatActivity {
         Drawable gradientDrawable = getColorForSession(pomodoroTimer.getCurrentSession());
         gradientOverlay.setBackground(gradientDrawable);
         gradientOverlay.setAlpha(0.5f); // Set alpha value to control transparency of overlay
+
+        // Read the value of completedPomodoros from completedPomodoros.txt
+        int completedPomodoros = 0;
+        try {
+            FileInputStream inputStream = openFileInput("completedPomodoros.txt");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line = bufferedReader.readLine();
+            if (line != null) {
+                completedPomodoros = Integer.parseInt(line);
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Update completed pomodoros text view
+        TextView completedPomodorosTextView = findViewById(R.id.completedPomodorosTextView);
+        completedPomodorosTextView.setText(String.valueOf(completedPomodoros));
     }
+
 
     // Get the appropriate background color for the given session
     private Drawable getColorForSession(PomodoroTimer.Session session) {

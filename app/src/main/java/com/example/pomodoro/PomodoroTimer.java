@@ -1,10 +1,19 @@
 package com.example.pomodoro;
 
+import android.content.Context;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class PomodoroTimer {
     // Declare constants for session durations
-    private static final long WORK_DURATION = 20 * 60 * 1000; // 20 minutes in milliseconds
-    private static final long SHORT_BREAK_DURATION = 10 * 60 * 1000; // 5 minutes in milliseconds
-    private static final long LONG_BREAK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
+    private static final long WORK_DURATION = 1 * 1 * 1000; // 20 minutes in milliseconds
+    private static final long SHORT_BREAK_DURATION = 1 * 1 * 1000; // 5 minutes in milliseconds
+    private static final long LONG_BREAK_DURATION = 1 * 1 * 1000; // 15 minutes in milliseconds
+    private final Context context;
 
     // Declare enum for session types
     public enum Session {
@@ -21,7 +30,8 @@ public class PomodoroTimer {
     private int completedPomodoros;
     private int workSessionsTaken;
 
-    public PomodoroTimer() {
+    public PomodoroTimer(Context context) {
+        this.context = context;
         // Initialize timer logic
         currentSession = Session.WORK;
         timeRemaining = WORK_DURATION;
@@ -29,6 +39,29 @@ public class PomodoroTimer {
         isRunning = false;
         completedPomodoros = 0;
         workSessionsTaken = 0;
+    }
+
+    private void incrementCompletedPomodoros() {
+        try {
+            String filename = "completedPomodoros.txt";
+
+            // Read the current count from the file
+            FileInputStream fis = context.openFileInput(filename);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+            String fileContents = reader.readLine();
+            int count = Integer.parseInt(fileContents);
+            fis.close();
+
+            // Increment the count by 1
+            count++;
+
+            // Write the updated count to the file
+            FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
+            fos.write(Integer.toString(count).getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void start() {
@@ -87,7 +120,7 @@ public class PomodoroTimer {
                         timeRemaining = LONG_BREAK_DURATION;
                     } else {
                         // The pomodoro is finished
-                        completedPomodoros++;
+                        incrementCompletedPomodoros();
                         stop();
                     }
                     workSessionsTaken = 0;
