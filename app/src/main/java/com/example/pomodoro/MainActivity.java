@@ -1,7 +1,5 @@
 package com.example.pomodoro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -12,9 +10,10 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(() -> {
             while (true) {
                 // Update the UI on the main thread
-                runOnUiThread(() -> updateUI());
+                runOnUiThread(this::updateUI);
 
                 // Sleep for a short time to avoid using too much CPU
                 try {

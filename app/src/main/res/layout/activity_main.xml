@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/completedPomodorosTextView"
-        android:layout_width="19dp"
+        android:layout_width="33dp"
         android:layout_height="32dp"
         android:text="0"
         android:textAlignment="center"

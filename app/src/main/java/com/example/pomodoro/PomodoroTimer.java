@@ -4,15 +4,16 @@ import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class PomodoroTimer {
     // Declare constants for session durations
-    private static final long WORK_DURATION = 1 * 1 * 1000; // 20 minutes in milliseconds
-    private static final long SHORT_BREAK_DURATION = 1 * 1 * 1000; // 5 minutes in milliseconds
-    private static final long LONG_BREAK_DURATION = 1 * 1 * 1000; // 15 minutes in milliseconds
+    private static final long WORK_DURATION = 20 * 60 * 1000; // 20 minutes in milliseconds
+    private static final long SHORT_BREAK_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+    private static final long LONG_BREAK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
     private final Context context;
 
     // Declare enum for session types
@@ -57,8 +58,23 @@ public class PomodoroTimer {
 
             // Write the updated count to the file
             FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
-            fos.write(Integer.toString(count).getBytes());
+            String updatedContents = Integer.toString(count);
+            fos.write(updatedContents.getBytes());
             fos.close();
+        } catch (FileNotFoundException e) {
+            // If the file doesn't exist, create it with a default value of 0 and increment it
+            try {
+                String filename = "completedPomodoros.txt";
+                int count = 1;
+
+                // Write the initial count to the file
+                FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
+                String initialContents = Integer.toString(count);
+                fos.write(initialContents.getBytes());
+                fos.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
