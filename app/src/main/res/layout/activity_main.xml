@@ -1,93 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/completedPomodorosTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_width="19dp"
+        android:layout_height="32dp"
         android:text="0"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/tomatoImageView"
         android:layout_width="33dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="0dp"
-        android:layout_toStartOf="@id/completedPomodorosTextView"
-        android:src="@drawable/tomato" />
+        android:src="@drawable/tomato"
+        app:layout_constraintBottom_toBottomOf="@+id/completedPomodorosTextView"
+        app:layout_constraintEnd_toStartOf="@+id/completedPomodorosTextView" />
 
     <TextView
         android:id="@+id/sessionNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tomatoImageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/timeRemainingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sessionNameTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:textSize="48sp" />
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sessionNameTextView"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="394dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/timeRemainingTextView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="8dp"
-        android:progressDrawable="@drawable/custom_progress_bar" />
+        android:layout_marginTop="12dp"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRemainingTextView"
+        app:layout_constraintVertical_bias="0.04" />
 
     <Button
         android:id="@+id/playButton"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:background="@drawable/round_button_green"
         android:text="▶"
-        android:textSize="32sp" />
+        android:textSize="42sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927" />
 
     <Button
         android:id="@+id/pauseButton"
-        android:layout_width="67dp"
-        android:layout_height="68dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="288dp"
-        android:layout_marginBottom="49dp"
-        android:background="@drawable/round_button_yellow"
-        android:gravity="center"
-        android:padding="12dp"
-        android:shape="oval"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:background="@drawable/round_button_green"
         android:text="❚❚"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/playButton"
+        app:layout_constraintEnd_toStartOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/playButton" />
 
     <Button
         android:id="@+id/stopButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="61dp"
-        android:background="@drawable/round_button_red"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:background="@drawable/round_button_green"
         android:text="■"
-        android:textSize="24sp" />
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playButton"
+        app:layout_constraintTop_toTopOf="@+id/playButton" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
