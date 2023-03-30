@@ -170,7 +170,7 @@
         android:layout_height="51dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
-        android:tint="#9C9C9C"
+        app:tint="#9C9C9C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
