@@ -1,6 +1,8 @@
 package com.example.pomodoro;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -159,6 +161,10 @@ public class PomodoroTimer {
             default:
                 break;
         }
+    }
+
+    public int getLongBreaksTaken() {
+        return longBreaksTaken;
     }
 
     public int getCompletedPomodoros() {

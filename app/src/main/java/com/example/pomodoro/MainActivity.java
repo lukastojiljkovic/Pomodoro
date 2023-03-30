@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton pauseButton;
     private ImageButton stopButton;
     private ImageButton resetButton;
+    private ImageView imageView;
 
     // Declare variables for timer logic
     private PomodoroTimer pomodoroTimer;
@@ -136,8 +137,21 @@ public class MainActivity extends AppCompatActivity {
         // Update completed pomodoros text view
         TextView completedPomodorosTextView = findViewById(R.id.completedPomodorosTextView);
         completedPomodorosTextView.setText(String.valueOf(completedPomodoros));
-    }
 
+        // Update tomato plant image view based on number of long breaks taken
+        imageView = findViewById(R.id.tomato_plant_image);
+        if (pomodoroTimer.getLongBreaksTaken() == 0) {
+            imageView.setImageResource(R.drawable.tomato_plant_1);
+        } else if (pomodoroTimer.getLongBreaksTaken() == 1) {
+            imageView.setImageResource(R.drawable.tomato_plant_2);
+        } else if (pomodoroTimer.getLongBreaksTaken() == 2) {
+            imageView.setImageResource(R.drawable.tomato_plant_3);
+        } else if (pomodoroTimer.getLongBreaksTaken() == 3) {
+            imageView.setImageResource(R.drawable.tomato_plant_3);
+        }
+        imageView.setVisibility(View.VISIBLE);
+
+    }
 
     // Get the appropriate background color for the given session
     private Drawable getColorForSession(PomodoroTimer.Session session) {

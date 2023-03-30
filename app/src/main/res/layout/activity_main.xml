@@ -31,6 +31,7 @@
         android:layout_height="36dp"
         android:text="0"
         android:textAlignment="center"
+        android:textColor="#C8C8C8"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/resetButton"
@@ -96,6 +97,7 @@
         android:contentDescription="@string/play_button_description"
         android:scaleType="fitCenter"
         android:src="@drawable/play_button"
+        app:tint="#00CCB9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -112,6 +114,7 @@
         android:contentDescription="@string/pause_button_description"
         android:scaleType="fitCenter"
         android:src="@drawable/pause_button"
+        app:tint="#FFC107"
         app:layout_constraintBottom_toBottomOf="@+id/playButton"
         app:layout_constraintEnd_toStartOf="@+id/playButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +129,7 @@
         android:padding="5dp"
         android:scaleType="fitCenter"
         android:src="@drawable/stop_button"
+        app:tint="#F44336"
         app:layout_constraintBottom_toBottomOf="@+id/playButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playButton"
@@ -141,12 +145,39 @@
         android:padding="8dp"
         android:scaleType="centerInside"
         android:src="@drawable/reset_button"
+        app:tint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tomatoImageView"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck,TouchTargetSizeCheck"
         tools:src="@drawable/reset_button" />
+
+    <ImageView
+        android:id="@+id/tomato_plant_image"
+        android:layout_width="159dp"
+        android:layout_height="232dp"
+        app:layout_constraintBottom_toTopOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        tools:srcCompat="@drawable/tomato_plant_3"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:tint="#9C9C9C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103"
+        app:srcCompat="@drawable/settings_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
