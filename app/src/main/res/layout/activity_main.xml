@@ -33,23 +33,31 @@
         android:textAlignment="center"
         android:textSize="28sp"
         android:textStyle="bold"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
-        tools:layout_editor_absoluteX="378dp" />
+        app:layout_constraintBottom_toTopOf="@+id/resetButton"
+        app:layout_constraintEnd_toEndOf="@+id/resetButton"
+        app:layout_constraintStart_toEndOf="@+id/tomatoImageView"
+        app:layout_constraintTop_toTopOf="@+id/tomatoImageView"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
 
     <ImageView
         android:id="@+id/tomatoImageView"
         android:layout_width="41dp"
         android:layout_height="36dp"
+        android:layout_marginTop="28dp"
         android:src="@drawable/completed_pomodoros"
-        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck"
-        tools:layout_editor_absoluteX="337dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/resetButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47"
+        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/sessionNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="148dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,9 +98,10 @@
         android:src="@drawable/play_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927"
+        app:layout_constraintVertical_bias="0.911"
         tools:src="@drawable/play_button" />
 
     <ImageButton
@@ -126,7 +135,7 @@
         android:id="@+id/resetButton"
         android:layout_width="74dp"
         android:layout_height="45dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="104dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/reset_button_description"
         android:padding="8dp"
