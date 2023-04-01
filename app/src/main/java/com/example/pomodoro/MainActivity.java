@@ -1,6 +1,7 @@
 package com.example.pomodoro;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton stopButton;
     private ImageButton resetButton;
     private ImageView imageView;
+    private ImageButton mSettingsButton;
 
     // Declare variables for timer logic
     private PomodoroTimer pomodoroTimer;
@@ -46,10 +48,21 @@ public class MainActivity extends AppCompatActivity {
         pauseButton = findViewById(R.id.pauseButton);
         stopButton = findViewById(R.id.stopButton);
         resetButton = findViewById(R.id.resetButton);
+        mSettingsButton = findViewById(R.id.settingsButton);
 
         // Initialize timer logic
         Context context = getApplicationContext();
         pomodoroTimer = new PomodoroTimer(context);
+
+        // Set an OnClickListener on the ImageButton
+        mSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the SettingsActivity
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Set up button click listeners
         resetButton.setOnClickListener(view -> {
@@ -141,11 +154,11 @@ public class MainActivity extends AppCompatActivity {
         // Update tomato plant image view based on number of long breaks taken
         imageView = findViewById(R.id.tomato_plant_image);
         if (pomodoroTimer.getLongBreaksTaken() == 0) {
-            imageView.setImageResource(R.drawable.tomato_plant_1);
+            imageView.setImageResource(R.drawable.tomato_plant_0);
         } else if (pomodoroTimer.getLongBreaksTaken() == 1) {
-            imageView.setImageResource(R.drawable.tomato_plant_2);
+            imageView.setImageResource(R.drawable.tomato_plant_1);
         } else if (pomodoroTimer.getLongBreaksTaken() == 2) {
-            imageView.setImageResource(R.drawable.tomato_plant_3);
+            imageView.setImageResource(R.drawable.tomato_plant_2);
         } else if (pomodoroTimer.getLongBreaksTaken() == 3) {
             imageView.setImageResource(R.drawable.tomato_plant_3);
         }

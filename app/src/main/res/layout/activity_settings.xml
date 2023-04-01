@@ -1,45 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#588A4E">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Work Duration (minutes)" />
+        android:id="@+id/workDurationTextView"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:fontFamily="monospace"
+        android:text="Work Duration (minutes)"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/workDurationEditText"
+        app:layout_constraintEnd_toStartOf="@+id/workDurationEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/workDurationEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/workDurationEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:layout_width="100dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="monospace"
+        android:hint="20"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/shortBreakDurationEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Short Break Duration (minutes)" />
+        android:id="@+id/shortBreakDurationTextView"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:fontFamily="monospace"
+        android:text="Short Break Duration (minutes)"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/shortBreakDurationEditText"
+        app:layout_constraintEnd_toStartOf="@+id/shortBreakDurationEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shortBreakDurationEditText" />
 
     <EditText
         android:id="@+id/shortBreakDurationEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:layout_width="100dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="monospace"
+        android:hint="5"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/longBreakDurationEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Long Break Duration (minutes)" />
+        android:id="@+id/longBreakDurationTextView"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:fontFamily="monospace"
+        android:text="Long Break Duration (minutes)"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/longBreakDurationEditText"
+        app:layout_constraintEnd_toStartOf="@+id/longBreakDurationEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/longBreakDurationEditText" />
 
     <EditText
         android:id="@+id/longBreakDurationEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:layout_width="100dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="80dp"
+        android:fontFamily="monospace"
+        android:hint="15"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save" />
-</LinearLayout>
+        android:text="Save"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/resetButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.856"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/saveButton"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Info"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/resetButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resetButton"
+        app:layout_constraintTop_toTopOf="@+id/resetButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="@+id/workDurationEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/workDurationEditText"
+        app:layout_constraintTop_toTopOf="@+id/workDurationEditText"
+        tools:srcCompat="@drawable/work" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shortBreakDurationEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shortBreakDurationEditText"
+        app:layout_constraintTop_toTopOf="@+id/shortBreakDurationEditText"
+        tools:srcCompat="@drawable/break_symbol" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="@+id/longBreakDurationEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/longBreakDurationEditText"
+        app:layout_constraintTop_toTopOf="@+id/longBreakDurationEditText"
+        tools:srcCompat="@drawable/break_symbol" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="269dp"
+        android:layout_height="204dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.106"
+        tools:srcCompat="@drawable/system" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

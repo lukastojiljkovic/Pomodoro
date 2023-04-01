@@ -1,6 +1,5 @@
 package com.example.pomodoro;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +13,17 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText shortBreakDurationEditText;
     private EditText longBreakDurationEditText;
     private Button saveButton;
+    private Button resetButton;
+
+    // Declare variables for durations
+    private int workDuration = 20;
+    private int shortBreakDuration = 5;
+    private int longBreakDuration = 15;
+
+    // Declare default values for durations
+    private static final int DEFAULT_WORK_DURATION = 20;
+    private static final int DEFAULT_SHORT_BREAK_DURATION = 5;
+    private static final int DEFAULT_LONG_BREAK_DURATION = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,37 +35,54 @@ public class SettingsActivity extends AppCompatActivity {
         shortBreakDurationEditText = findViewById(R.id.shortBreakDurationEditText);
         longBreakDurationEditText = findViewById(R.id.longBreakDurationEditText);
         saveButton = findViewById(R.id.saveButton);
+        resetButton = findViewById(R.id.resetButton);
 
         // Set up button click listener
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Save the settings
+                // Save settings
                 saveSettings();
+            }
+        });
+        // resets the durations to default
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Reset settings to default values
+                resetSettings();
             }
         });
     }
 
     private void saveSettings() {
-        // Get the values entered by the user
-        String workDurationString = workDurationEditText.getText().toString();
-        String shortBreakDurationString = shortBreakDurationEditText.getText().toString();
-        String longBreakDurationString = longBreakDurationEditText.getText().toString();
+        // Get durations from EditTexts and convert to int
+        workDuration = Integer.parseInt(workDurationEditText.getText().toString());
+        shortBreakDuration = Integer.parseInt(shortBreakDurationEditText.getText().toString());
+        longBreakDuration = Integer.parseInt(longBreakDurationEditText.getText().toString());
+    }
 
-        // Convert the values to integers
-        int workDuration = Integer.parseInt(workDurationString);
-        int shortBreakDuration = Integer.parseInt(shortBreakDurationString);
-        int longBreakDuration = Integer.parseInt(longBreakDurationString);
+    private void resetSettings() {
+        // Set durations to default values
+        workDuration = DEFAULT_WORK_DURATION;
+        shortBreakDuration = DEFAULT_SHORT_BREAK_DURATION;
+        longBreakDuration = DEFAULT_LONG_BREAK_DURATION;
 
-        // Save the settings using SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("PomodoroSettings", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("workDuration", workDuration);
-        editor.putInt("shortBreakDuration", shortBreakDuration);
-        editor.putInt("longBreakDuration", longBreakDuration);
-        editor.apply();
+        // Update EditTexts with default values
+        workDurationEditText.setText(String.valueOf(DEFAULT_WORK_DURATION));
+        shortBreakDurationEditText.setText(String.valueOf(DEFAULT_SHORT_BREAK_DURATION));
+        longBreakDurationEditText.setText(String.valueOf(DEFAULT_LONG_BREAK_DURATION));
+    }
 
-        // Close the settings activity
-        finish();
+    public int getWorkDuration() {
+        return workDuration;
+    }
+
+    public int getShortBreakDuration() {
+        return shortBreakDuration;
+    }
+
+    public int getLongBreakDuration() {
+        return longBreakDuration;
     }
 }
