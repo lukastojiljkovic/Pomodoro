@@ -98,10 +98,11 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:text="Save"
         android:textAlignment="center"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/resetButton"
@@ -112,8 +113,8 @@
 
     <Button
         android:id="@+id/resetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:text="Reset"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -125,8 +126,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:fontFamily="monospace"
         android:text="Info"
         android:textAlignment="center"
@@ -145,6 +146,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/workDurationEditText"
         app:layout_constraintTop_toTopOf="@+id/workDurationEditText"
+        app:srcCompat="@drawable/work"
         tools:srcCompat="@drawable/work" />
 
     <ImageView
@@ -155,6 +157,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shortBreakDurationEditText"
         app:layout_constraintTop_toTopOf="@+id/shortBreakDurationEditText"
+        app:srcCompat="@drawable/break_symbol"
         tools:srcCompat="@drawable/break_symbol" />
 
     <ImageView
@@ -165,17 +168,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/longBreakDurationEditText"
         app:layout_constraintTop_toTopOf="@+id/longBreakDurationEditText"
+        app:srcCompat="@drawable/break_symbol"
         tools:srcCompat="@drawable/break_symbol" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="269dp"
-        android:layout_height="204dp"
+        android:layout_width="267dp"
+        android:layout_height="223dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.106"
+        app:srcCompat="@drawable/system"
         tools:srcCompat="@drawable/system" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

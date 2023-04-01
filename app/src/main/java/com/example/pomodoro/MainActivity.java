@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         drawable.setShape(GradientDrawable.RECTANGLE);
         switch (session) {
             case WORK:
-                drawable.setColors(new int[]{Color.argb(150, 0, 155, 0), Color.argb(25, 155, 255, 0)});
+                drawable.setColors(new int[]{Color.argb(150, 75, 175, 25), Color.argb(25, 100, 158, 58)});
                 break;
             case SHORT_BREAK:
                 drawable.setColors(new int[]{Color.argb(150, 0, 120, 240), Color.argb(25, 32, 50, 150)});
