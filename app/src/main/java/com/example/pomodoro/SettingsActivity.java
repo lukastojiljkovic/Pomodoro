@@ -1,7 +1,6 @@
 package com.example.pomodoro;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,14 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button resetButton;
 
     // Declare variables for durations
-    private int workDuration = 20;
-    private int shortBreakDuration = 5;
-    private int longBreakDuration = 15;
-
-    // Declare default values for durations
-    private static final int DEFAULT_WORK_DURATION = 20;
-    private static final int DEFAULT_SHORT_BREAK_DURATION = 5;
-    private static final int DEFAULT_LONG_BREAK_DURATION = 15;
+    SessionDurations durations = new SessionDurations();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,51 +30,38 @@ public class SettingsActivity extends AppCompatActivity {
         resetButton = findViewById(R.id.resetButton);
 
         // Set up button click listener
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Save settings
-                saveSettings();
-            }
+        saveButton.setOnClickListener(view -> {
+            // Save settings
+            saveSettings();
         });
         // resets the durations to default
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Reset settings to default values
-                resetSettings();
-            }
+        resetButton.setOnClickListener(view -> {
+            // Reset settings to default values
+            resetSettings();
         });
     }
 
     private void saveSettings() {
         // Get durations from EditTexts and convert to int
-        workDuration = Integer.parseInt(workDurationEditText.getText().toString());
-        shortBreakDuration = Integer.parseInt(shortBreakDurationEditText.getText().toString());
-        longBreakDuration = Integer.parseInt(longBreakDurationEditText.getText().toString());
+        int workDuration = Integer.parseInt(workDurationEditText.getText().toString());
+        int shortBreakDuration = Integer.parseInt(shortBreakDurationEditText.getText().toString());
+        int longBreakDuration = Integer.parseInt(longBreakDurationEditText.getText().toString());
+
+        // Set new durations in the SessionDurations object
+        durations.setWorkDuration(workDuration);
+        durations.setShortBreakDuration(shortBreakDuration);
+        durations.setLongBreakDuration(longBreakDuration);
     }
 
     private void resetSettings() {
         // Set durations to default values
-        workDuration = DEFAULT_WORK_DURATION;
-        shortBreakDuration = DEFAULT_SHORT_BREAK_DURATION;
-        longBreakDuration = DEFAULT_LONG_BREAK_DURATION;
+        durations.setWorkDuration(20);
+        durations.setShortBreakDuration(5);
+        durations.setLongBreakDuration(15);
 
         // Update EditTexts with default values
-        workDurationEditText.setText(String.valueOf(DEFAULT_WORK_DURATION));
-        shortBreakDurationEditText.setText(String.valueOf(DEFAULT_SHORT_BREAK_DURATION));
-        longBreakDurationEditText.setText(String.valueOf(DEFAULT_LONG_BREAK_DURATION));
-    }
-
-    public int getWorkDuration() {
-        return workDuration;
-    }
-
-    public int getShortBreakDuration() {
-        return shortBreakDuration;
-    }
-
-    public int getLongBreakDuration() {
-        return longBreakDuration;
+        workDurationEditText.setText(String.valueOf(durations.getWorkDuration()));
+        shortBreakDurationEditText.setText(String.valueOf(durations.getShortBreakDuration()));
+        longBreakDurationEditText.setText(String.valueOf(durations.getLongBreakDuration()));
     }
 }

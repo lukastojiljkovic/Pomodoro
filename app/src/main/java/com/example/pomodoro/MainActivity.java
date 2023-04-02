@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     // Declare variables for timer logic
     private PomodoroTimer pomodoroTimer;
 
+    private SessionDurations durations;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         pomodoroTimer = new PomodoroTimer(context);
 
+        // Create an instance of SessionDurations and update the durations
+        durations = new SessionDurations();
+        durations.updateDurations();
+        pomodoroTimer.seconds.obrserve() {
+
+        }
+
         // Set an OnClickListener on the ImageButton
         mSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set up button click listeners
+        // Set up button clieck listeners
         resetButton.setOnClickListener(view -> {
             // reset the number of completed pomodoros
             resetCompletedPomodoros(MainActivity.this);
@@ -163,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.tomato_plant_3);
         }
         imageView.setVisibility(View.VISIBLE);
-
     }
 
     // Get the appropriate background color for the given session

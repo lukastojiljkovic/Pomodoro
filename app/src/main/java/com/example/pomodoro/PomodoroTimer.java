@@ -1,8 +1,8 @@
 package com.example.pomodoro;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
+
+import androidx.lifecycle.LiveData;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -13,10 +13,21 @@ import java.io.InputStreamReader;
 
 public class PomodoroTimer {
     // Declare constants for session durations
-    private static final long WORK_DURATION = 20 * 60 * 1000; // 20 minutes in milliseconds
-    private static final long SHORT_BREAK_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
-    private static final long LONG_BREAK_DURATION = 15 * 60 * 1000; // 15 minutes in milliseconds
+    private SessionDurations durations = new SessionDurations();
+    private long WORK_DURATION = durations.getWorkDuration() * 60 * 1000; // 20 minutes in milliseconds
+    private long SHORT_BREAK_DURATION = durations.getShortBreakDuration() * 60 * 1000; // 5 minutes in milliseconds
+    private long LONG_BREAK_DURATION = durations.getLongBreakDuration() * 60 * 1000; // 15 minutes in milliseconds
     private final Context context;
+
+    // update durations for pomodoro timer
+    public void updateDurations() {
+        WORK_DURATION = durations.getWorkDuration() * 60 * 1000;
+        SHORT_BREAK_DURATION = durations.getShortBreakDuration() * 60 * 1000;
+        LONG_BREAK_DURATION = durations.getLongBreakDuration() * 60 * 1000;
+    }
+
+    val seconds: LiveData<Integer> = LiveData<Integer>
+    seconds.value = brsekundi
 
     // Declare enum for session types
     public enum Session {
@@ -30,7 +41,6 @@ public class PomodoroTimer {
     private long timeRemaining;
     private int longBreaksTaken;
     private boolean isRunning;
-    private int completedPomodoros;
     private int workSessionsTaken;
 
     public PomodoroTimer(Context context) {
@@ -40,7 +50,6 @@ public class PomodoroTimer {
         timeRemaining = WORK_DURATION;
         longBreaksTaken = 0;
         isRunning = false;
-        completedPomodoros = 0;
         workSessionsTaken = 0;
     }
 
@@ -165,10 +174,6 @@ public class PomodoroTimer {
 
     public int getLongBreaksTaken() {
         return longBreaksTaken;
-    }
-
-    public int getCompletedPomodoros() {
-        return completedPomodoros;
     }
 
     public String getCurrentSessionName() {
